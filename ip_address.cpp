@@ -3,6 +3,7 @@
 
 std::string ipAddress;
 int octet = 0;
+bool ip_address = false;
 
 void get_address_octet(){
     std::istringstream ipAdd(ipAddress);
@@ -17,7 +18,7 @@ void get_address_octet(){
 }
 
 
-bool valid_address(){
+void valid_address(){
     std::cout << "Input ip adress in format xxx.xxx.xxx.xxx: ";
     std::getline(std::cin, ipAddress);
     std::cout << "Input octet number: ";
@@ -31,10 +32,10 @@ bool valid_address(){
         int number;
         if (std::istringstream(part) >> number){
             if (number >= 0 && number <= 255){
-                return true;
+                ip_address = true;
             } else {
                 std::cout << "Invalid";
-                return 0;
+                ip_address = false;
                 break;
             }
         } else {std::cout << "Invalid"; break;}
@@ -46,7 +47,7 @@ bool valid_address(){
 int main(){
     valid_address();
 
-    if (valid_address){
+    if (ip_address){
         get_address_octet();
     }
 }
