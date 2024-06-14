@@ -21,6 +21,7 @@ void get_address_octet(){
     }
     if (count_octet != 4){
         std::cout << "Invalid";
+        allow_check = false;
     }
 }
 
@@ -42,7 +43,7 @@ void valid_address(){
         }
     }
 
-    if(symbols == true){
+    if(symbols == true && allow_check == true){
         while(getline(ipAdd, part, '.')){
             int number;
             if (std::istringstream(part) >> number){
